@@ -31,10 +31,12 @@ int main() {
 
     // ToCode: to run the "Healthcare Management Systems" until all calories are used up or the user wants to exit the system
     do {
-    	//남은 칼로리가 0인 경우 & 첫 시작 때는 섭취 칼로리와 태운 칼로리가 같으므로 예외 처리  
+    	//남은 칼로리가 0인 경우 & 첫 시작 때는 섭취 칼로리와 태운 칼로리가 같으므로 예외 처리 
+		remaining_calories = health_data.total_calories_intake - health_data.total_calories_burned - BASAL_METABOLIC_RATE; 
     	if (remaining_calories == 0)
 		{
             printf("You have consumed all your calories for today! \n");
+            break;
 		} 
 		
 		else

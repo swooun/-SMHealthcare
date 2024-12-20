@@ -129,4 +129,5 @@ void printHealthData(const HealthData* health_data)
 	}
     
 	 printf("=======================================================================\n");
+	 
 }
