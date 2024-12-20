@@ -1,10 +1,8 @@
 [Exercises] 
-walking - 156 kcal
-Total calories burned: 156 kcal 
+ - 0
 
 [Diets] 
-Total calories intake: 0 kcal 
+ - 0
+ - 0
 
 [Total] 
-Basal metabolic rate: 1300 kcal
-The remaining calories: -1456 kcal

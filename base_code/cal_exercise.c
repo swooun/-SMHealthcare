@@ -28,6 +28,9 @@ int exercise_list_size = 0;
 
 void loadExercises(const char* EXERCISEFILEPATH)
    {
+   	char str[50];
+   	int n = 50;
+   	
     FILE *file = fopen(EXERCISEFILEPATH, "r");  
     if (file == NULL) 
 	{
@@ -36,10 +39,11 @@ void loadExercises(const char* EXERCISEFILEPATH)
     }
 
     // ToCode: to read a list of the exercises from the given file
-    while (fscanf(file, "%s - %d", exercise_list[exercise_list_size].exercise_name, &exercise_list[exercise_list_size].calories_burned_per_minute)) 
+    while (fscanf(file, "%s %d", &exercise_list[exercise_list_size].exercise_name, &exercise_list[exercise_list_size].calories_burned_per_minute)) 
 	{
     	exercise_list_size++;
-        if (exercise_list_size >= MAX_EXERCISES)
+    	// exercise 목록이 없어도 출력되는 오류 수정 (week11참고) 
+        if (exercise_list_size >= MAX_EXERCISES || fgets(str, n, file) == NULL)
 		{
         	break;
 		}
@@ -70,7 +74,7 @@ void inputExercise(HealthData* health_data) {
 	}
 
     // ToCode: to enter the exercise to be chosen with exit option
-    printf("Enter the number of the excercise: ");
+    printf("choose(1-7): ");
     scanf("%d", &choice);        //입력받은 값을 choice에 할당  
     
     //운동 번호가 아닌 값 예외 처리  

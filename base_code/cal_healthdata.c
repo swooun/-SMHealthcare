@@ -95,7 +95,7 @@ void printHealthData(const HealthData* health_data)
     printf("Total calories burned: %d kcacl\n", health_data->total_calories_burned);
     printf("Total calories intake: %d kcal\n", health_data->total_calories_intake);
     printf("The remaining calories: %d kcal\n", remaining_calories);
-    printf("=======================================================================\n \n");
+    printf("=======================================================================\n");
     
 	
 	// ToCode: to print out the recommendtaion depending on the current total calories burned and intake    
@@ -104,27 +104,27 @@ void printHealthData(const HealthData* health_data)
     	printf("[Warning] Too few calories!\n");
     	if (health_data->total_calories_intake == DAILY_CALORIE_GOAL)
     	{
-    		printf("Your calorie intake for today has reached your goal!");
+    		printf("Your calorie intake for today has reached your goal!\n");
 		}
 		else if (health_data->total_calories_intake < DAILY_CALORIE_GOAL)
 		{
-			printf("Your total calorie intake for today has not reached your goal, remember to eat more!");
+			printf("Your total calorie intake for today has not reached your goal, remember to eat more!\n");
 		}
 		else
 		{
-			printf("You have eaten more calories than planned today, but you have exercised too much!");
+			printf("You have eaten more calories than planned today, but you have exercised too much!\n");
 		}
 	}
 	else if (remaining_calories > 0)
 	{
-		printf("Please exercise for your health!");
+		printf("Please exercise for your health!\n");
 		if (health_data->total_calories_intake == DAILY_CALORIE_GOAL)
 		{
-			printf("Your total calorie intake for today has reached your goal!");
+			printf("Your total calorie intake for today has reached your goal!\n");
 		}
 		else if (health_data->total_calories_intake < DAILY_CALORIE_GOAL)
 		{
-			printf("Your total calorie intake for today has not reached your goal, remember to eat more!");
+			printf("Your total calorie intake for today has not reached your goal, remember to eat more!\n");
 		}
 	}
     

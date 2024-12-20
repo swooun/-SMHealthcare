@@ -27,7 +27,10 @@ static int diet_list_size = 0;
 */
 
 void loadDiets(const char* DIETFILEPATH) 
-    {
+{
+    char str[50];
+    int n = 50;
+    	
     FILE *file = fopen(DIETFILEPATH, "r");  
     if (file == NULL) 
 	{
@@ -36,10 +39,11 @@ void loadDiets(const char* DIETFILEPATH)
     }
 
      // ToCode: to read a list of the diets from the given file
-    while (file, "%s - %d", diet_list[diet_list_size].food_name, &diet_list[diet_list_size].calories_intake) 
+    while (fscanf(file, "%s %d", diet_list[diet_list_size].food_name, &diet_list[diet_list_size].calories_intake)) 
 	{
     	diet_list_size++;
-        if (diet_list_size >= MAX_DIETS)
+    	//loadexercises랑 동일한 오류 수정  
+        if (diet_list_size >= MAX_DIETS || fgets(str, n, file) == NULL)
 		{
         	break;
 		}
@@ -63,13 +67,13 @@ void inputDiet(HealthData* health_data)
     
     // ToCode: to provide the options for the diets to be selected
     printf("The list of diets:\n"); 
-    printf("0. exit");       //exit 옵션  
+    printf("0. exit\n");       //exit 옵션  
     for(i=0;i<diet_list_size;i++)
 	{
 		printf("%d. %s - %d\n", i+1, diet_list[i].food_name, diet_list[i].calories_intake);
 	} 
 	
-    printf("Enter the food you ate: ");      
+    printf("choose(0-7): ");      
     scanf("%d", &choice);                           //식사 옵션에서 선택한 번호를  choice에 할당 
     
 	// ToCode: to enter the diet to be chosen with exit option
