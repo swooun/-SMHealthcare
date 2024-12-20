@@ -64,6 +64,7 @@ void loadDiets(const char* DIETFILEPATH)
 void inputDiet(HealthData* health_data) 
 {
     int choice, i;
+    int exercise_list_size;
     
     // ToCode: to provide the options for the diets to be selected
     printf("The list of diets:\n"); 
@@ -73,7 +74,7 @@ void inputDiet(HealthData* health_data)
 		printf("%d. %s - %d\n", i+1, diet_list[i].food_name, diet_list[i].calories_intake);
 	} 
 	
-    printf("choose(0-7): ");      
+    printf("choose(0-%s): ", exercise_list_size);      
     scanf("%d", &choice);                           //식사 옵션에서 선택한 번호를  choice에 할당 
     
 	// ToCode: to enter the diet to be chosen with exit option
@@ -91,6 +92,7 @@ void inputDiet(HealthData* health_data)
         return;
 	}
     // ToCode: to enter the selected diet in the health data
+
     health_data->diet_count++;
   
 

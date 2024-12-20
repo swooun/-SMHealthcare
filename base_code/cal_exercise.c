@@ -65,7 +65,7 @@ void loadExercises(const char* EXERCISEFILEPATH)
 
 void inputExercise(HealthData* health_data) {
     int choice, duration, i, calories_burned;
-    
+  
     // ToCode: to provide the options for the exercises to be selected
     printf("The list of exercises: \n");
     for(i=0;i<exercise_list_size;i++)
@@ -74,7 +74,7 @@ void inputExercise(HealthData* health_data) {
 	}
 
     // ToCode: to enter the exercise to be chosen with exit option
-    printf("choose(1-7): ");
+    printf("choose(1-%d): ", exercise_list_size);
     scanf("%d", &choice);        //입력받은 값을 choice에 할당  
     
     //운동 번호가 아닌 값 예외 처리  
