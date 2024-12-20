@@ -1,6 +1,9 @@
 [Exercises] 
 running - 11
+riding - 5
 
 [Diets] 
+chicken - 925
+pizza - 900
 
 [Total] 
