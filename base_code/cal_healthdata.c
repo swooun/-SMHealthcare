@@ -24,27 +24,35 @@
     			3. save the total remaining calrories
 */
 
-void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
+void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) 
+{
 	int i;
     FILE* file = fopen(HEALTHFILEPATH, "w");
-    if (file == NULL) {
+    if (file == NULL) 
+	{
         printf("There is no file for health data.\n");
         return;
     }
 
     // ToCode: to save the chosen exercise and total calories burned 
     fprintf(file, "[Exercises] \n");
-    
+    for(i=0;i<?;i++)
+    {
+    	fprintf(file, "%s - %d\n", health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute);
+	}   //운동 - 칼로리 프린트  
     
     // ToCode: to save the chosen diet and total calories intake 
     fprintf(file, "\n[Diets] \n");
-
-
+    for(i=0;i<?;i++)
+    {
+    	fprintf(file, "%s - %d\n", health_data->diet[i].food_name, health_data->diet[i].calories_intake);
+	}   //음식 - 칼로리 프린트  
 
     // ToCode: to save the total remaining calrories
     fprintf(file, "\n[Total] \n");
     
     
+    fclose(file);
 }
 
 /*

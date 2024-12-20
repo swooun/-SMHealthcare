@@ -30,10 +30,15 @@ int main() {
 
     // ToCode: to run the "Healthcare Management Systems" until all calories are used up or the user wants to exit the system
     do {
-    	if ( ){
+    	//남은 칼로리가 0인 경우  
+    	if (health_data.total_calories_burned >= health_data.total_calories_intake)
+		{
             printf("You have consumed all your calories for today! \n");
+            break;
 		} 
-		else{
+		
+		else
+		{
 			printf("\n=======================================================================\n");
         	printf("[Healthcare Management Systems] \n");
         	printf("1. Exercise \n");
@@ -46,17 +51,18 @@ int main() {
         }
         
 		// ToCode: to run the sysmtem based on the user's choice
-        switch (choice) {
+        switch (choice) 
+		{
             case 1:
-            	inputExercise();
+            	inputExercise(&health_data);
                 break;
                 
             case 2:
-            	inputDiet();
+            	inputDiet(&health_data);
                 break;
                 
             case 3:
-            	
+            	printHealthData(&health_data);
                 break;
                 
             case 4:
