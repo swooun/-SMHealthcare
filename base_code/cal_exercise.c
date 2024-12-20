@@ -29,7 +29,8 @@ int exercise_list_size = 0;
 void loadExercises(const char* EXERCISEFILEPATH)
    {
     FILE *file = fopen(EXERCISEFILEPATH, "r");  
-    if (file == NULL) {
+    if (file == NULL) 
+	{
         printf("There is no file for exercises! \n");
         return;
     }
@@ -38,9 +39,9 @@ void loadExercises(const char* EXERCISEFILEPATH)
     //week11 실습6 참고  
     while (fgets(str, n, file) != NULL) 
 	{
-    	
     	exercise_list_size++;
-        if (exercise_list_size >= MAX_EXERCISES){
+        if (exercise_list_size >= MAX_EXERCISES)
+		{
         	break;
 		}
     }
@@ -64,11 +65,23 @@ void inputExercise(HealthData* health_data) {
     
     // ToCode: to provide the options for the exercises to be selected
     printf("The list of exercises: \n");
-
+    for(i=0;i<exercise_list_size;i++)
+    {
+    	printf("%d. %s - %d\n", i+1, exercise_list[i].exercise_name, exercise_list[i].calories_burned_per_minute);
+	}
 
     // ToCode: to enter the exercise to be chosen with exit option
     printf("Enter the number of the excercise: ");
     scanf("%d", &choice);        //입력받은 값을 choice에 할당  
+    
+    //운동 번호가 아닌 값 예외 처리  
+    if (choice < 1 || choice > exercise_list_size)
+    {
+    	printf("[Error] Invalid option. \n");
+        printf("Please try again! \n");
+        
+        return;
+	}
     
     // To enter the duration of the exercise
     printf("Enter the duration of the exercise (in min.): ");
@@ -76,7 +89,7 @@ void inputExercise(HealthData* health_data) {
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data
     total_calories_burned = exercise_list[choice - 1].calories_burned_per_minute * duration;
-    
     health_data->total_calories_burned += total_calories_burned;
+    health_data->exercise_count++; 
 
 }

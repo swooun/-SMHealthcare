@@ -34,7 +34,6 @@ int main() {
     	if (health_data.total_calories_burned >= health_data.total_calories_intake)
 		{
             printf("You have consumed all your calories for today! \n");
-            break;
 		} 
 		
 		else
@@ -76,6 +75,8 @@ int main() {
                 printf("Please try again! \n");
         }
     } while (choice != 4);     //사용자가 exit하기 전까지 루프  
+    
+    savaData(HEALTHFILEPATH, &health_data);
 
     return 0;
 }
