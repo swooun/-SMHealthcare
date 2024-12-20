@@ -20,18 +20,19 @@
 static int choice;
 
 int main() {
+	int remaining_calories = -1;
 	// To initialize the health data object
     HealthData health_data = {0};
     
     // Tocode: to read the list of the exercises and diets
-    loadExercise(EXERCISEFILEPATH);
+    loadExercises(EXERCISEFILEPATH);
 	loadDiets(DIETFILEPATH); 
     
 
     // ToCode: to run the "Healthcare Management Systems" until all calories are used up or the user wants to exit the system
     do {
-    	//남은 칼로리가 0인 경우  
-    	if (health_data.total_calories_burned >= health_data.total_calories_intake)
+    	//남은 칼로리가 0인 경우 & 첫 시작 때는 섭취 칼로리와 태운 칼로리가 같으므로 예외 처리  
+    	if (remaining_calories == 0)
 		{
             printf("You have consumed all your calories for today! \n");
 		} 
@@ -76,7 +77,7 @@ int main() {
         }
     } while (choice != 4);     //사용자가 exit하기 전까지 루프  
     
-    savaData(HEALTHFILEPATH, &health_data);
+    saveData(HEALTHFILEPATH, &health_data);
 
     return 0;
 }

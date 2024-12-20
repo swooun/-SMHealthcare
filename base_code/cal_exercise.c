@@ -36,8 +36,7 @@ void loadExercises(const char* EXERCISEFILEPATH)
     }
 
     // ToCode: to read a list of the exercises from the given file
-    //week11 실습6 참고  
-    while (fgets(str, n, file) != NULL) 
+    while (fscanf(file, "%s - %d", exercise_list[exercise_list_size].exercise_name, &exercise_list[exercise_list_size].calories_burned_per_minute)) 
 	{
     	exercise_list_size++;
         if (exercise_list_size >= MAX_EXERCISES)
@@ -61,7 +60,7 @@ void loadExercises(const char* EXERCISEFILEPATH)
 */
 
 void inputExercise(HealthData* health_data) {
-    int choice, duration, i;
+    int choice, duration, i, calories_burned;
     
     // ToCode: to provide the options for the exercises to be selected
     printf("The list of exercises: \n");
@@ -88,8 +87,8 @@ void inputExercise(HealthData* health_data) {
     scanf("%d", &duration);
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data
-    total_calories_burned = exercise_list[choice - 1].calories_burned_per_minute * duration;
-    health_data->total_calories_burned += total_calories_burned;
+    calories_burned = exercise_list[choice - 1].calories_burned_per_minute * duration;
+    health_data->total_calories_burned += calories_burned;
     health_data->exercise_count++; 
 
 }
