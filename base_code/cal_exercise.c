@@ -68,16 +68,21 @@ void inputExercise(HealthData* health_data) {
   
     // ToCode: to provide the options for the exercises to be selected
     printf("The list of exercises: \n");
+    printf("0. exit\n");
     for(i=0;i<exercise_list_size;i++)
     {
     	printf("%d. %s - %d\n", i+1, exercise_list[i].exercise_name, exercise_list[i].calories_burned_per_minute);
 	}
 
     // ToCode: to enter the exercise to be chosen with exit option
-    printf("choose(1-%d): ", exercise_list_size);
+    printf("choose(0-%d): ", exercise_list_size);
     scanf("%d", &choice);        //입력받은 값을 choice에 할당  
     
     //운동 번호가 아닌 값 예외 처리  
+    	if (choice == 0)
+	{
+		return;
+	}
     if (choice < 1 || choice > exercise_list_size)
     {
     	printf("[Error] Invalid option. \n");
@@ -92,7 +97,11 @@ void inputExercise(HealthData* health_data) {
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data
     calories_burned = exercise_list[choice - 1].calories_burned_per_minute * duration;
+    //history에 출력되지 않는 오류 수정, 문자열이라 그런지 =으로 안되길래 strcpy 처리 (week11) 
+    strcpy(health_data->exercises[health_data->exercise_count].exercise_name, exercise_list[choice-1].exercise_name);
+    health_data->exercises[health_data->exercise_count].calories_burned_per_minute = exercise_list[choice-1].calories_burned_per_minute;
     health_data->total_calories_burned += calories_burned;
     health_data->exercise_count++; 
+   
 
 }
